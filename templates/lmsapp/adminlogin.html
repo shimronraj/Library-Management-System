@@ -1,0 +1,28 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Login Page</title>
+
+    <link rel="stylesheet"  href="{% static './lmsapp/adminlogin.css' %}">
+</head>
+<body>
+
+    <div class="login-form">
+        <h1>Admin Login Here</h1>
+        <form action="adminlogin" method="post">
+            {% csrf_token %}
+            <p>User Name</p>
+            <input type="text" name="un" placeholder="User Name">
+            <p>Password</p>
+            <input type="password" name="pwd" placeholder="Password">
+
+            <button type="Submit">Login</button>
+            </a>
+            {% autoescape off %}{{ msg1 }}{% endautoescape %}
+        </form>
+    </div>
+</body>
+</html>

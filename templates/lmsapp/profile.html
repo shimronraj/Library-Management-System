@@ -1,0 +1,47 @@
+{% load static %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>student_retrive</title>
+    <link rel="stylesheet"  href="{% static './lmsapp/bookretrive.css' %}">
+
+</head>
+<body>
+<div class="mt-5">
+<h1 style="color: red;">Student Profile Details</h1>
+<form role="form" name="frm" action="profile" method="post">
+        {% csrf_token %}
+<table>
+
+    <tr>
+    <th>STUDENT NAME</th>
+    <th>GENDER</th>
+    <th>DATE OF BIRTH</th>
+    <th>ADDRESS</th>
+    <th>EMAIL ID</th>
+    <th>PHONE NO</th>
+    </tr>
+    <tbody>
+
+    {% for ud in student_details %}
+    <tr>
+        <td>{{ ud.stud_name }}</td>
+        <td>{{ ud.gender }}</td>
+        <td>{{ ud.date_of_birth }}</td>
+        <td>{{ ud.address }}</td>
+        <td>{{ ud.email_id }}</td>
+
+        <td>{{ ud.phn_no }}</td>
+
+
+    </tr>
+    {% endfor %}
+   </tbody>
+
+</table>
+</form>
+    <input type="hidden" name="s_id" value="{{up.id}}">
+</div>
+</body>
+</html>

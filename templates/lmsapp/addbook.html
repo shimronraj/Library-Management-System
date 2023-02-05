@@ -1,0 +1,94 @@
+{% load static %}
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"  href="{% static './lmsapp/addbook.css' %}">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="container">
+    <div class="title">ADD BOOK</div>
+    <div class="content">
+      <form action="{%url 'addbook'%}"method="post">
+        {% csrf_token %}
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">BOOK NAME</span>
+            <input type="text" name="name" placeholder="Enter book name"  required>
+          </div>
+
+          <div class="input-box">
+            <span class="details">BOOK ID</span>
+            <input type="text" placeholder="Enter Book id" onkeypress="return isNumberKey(event,this)"   required>
+          </div>
+          <div class="input-box">
+            <span class="details">AUTHOR NAME</span>
+            <input type="text" name="authorname" placeholder="Enter Author Name" onkeypress="return allowOnlyLetters(event,this);" required>
+          </div>
+          <div class="input-box">
+            <span class="details">BOOK COPIES</span>
+            <input type="text" name="copies" placeholder="Enter How Many Copies" onkeypress="return isNumberKey(event,this)"   required>
+          </div>
+
+           <div class="input-box">
+            <span class="details">PUBLISHED DATE</span>
+             <fieldset>
+               <input type="date" name="date" size="30" class="form-control"max="2020-12-10">
+             </fieldset>
+          </div>
+        </div>
+
+        <div class="button">
+          <input type="submit" value="ADD BOOK">
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+<script language="Javascript" type="text/javascript">
+
+function allowOnlyLetters(e, t)
+{
+   if (window.event)
+   {
+      var charCode = window.event.keyCode;
+   }
+   else if (e)
+   {
+      var charCode = e.which;
+   }
+   else { return true; }
+   if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123))
+       return true;
+   else
+   {
+      alert("Please enter only alphabets");
+      return false;
+   }
+}
+
+
+</script>
+
+<script type="text/javascript">
+
+        function isNumberKey(evt, obj) {
+
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            var value = obj.value;
+            var dotcontains = value.indexOf(".") != -1;
+            if (dotcontains)
+                if (charCode == 46) return false;
+            if (charCode == 46) return true;
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+            return true;
+        }
+
+
+
+    </script>
+</body>
+</html>

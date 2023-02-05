@@ -1,0 +1,87 @@
+{% load static %}
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"  href="{% static './lmsapp/feedback.css' %}">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="container">
+    <div class="title">Feedback</div>
+    <div class="content">
+      <form action="{%url 'feedback'%}"method="post">
+        {% csrf_token %}
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Enter Your Name</span>
+            <input type="text" name="name" placeholder="Enter your name" onkeypress="return allowOnlyLetters(event,this);"  required>
+          </div>
+          <div class="input-box">
+            <span class="details">Enter Your Email</span>
+            <input type="email" name="email"  placeholder="Enter your email" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Enter Your Phone Number</span>
+            <input type="text" name="phone" placeholder="Enter your number"minlength="10" maxlength="10" onkeypress="return isNumberKey(event,this)"  required>
+          </div>
+          <div class="input-box_feedback">
+            <span class="details">Feedback</span>
+            <input type="text" name="name" placeholder="Enter your Feedback Here" required>
+          </div>
+
+
+        </div>
+        <div class="button">
+          <input type="submit" value="Submit">
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+<script language="Javascript" type="text/javascript">
+
+function allowOnlyLetters(e, t)
+{
+   if (window.event)
+   {
+      var charCode = window.event.keyCode;
+   }
+   else if (e)
+   {
+      var charCode = e.which;
+   }
+   else { return true; }
+   if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123))
+       return true;
+   else
+   {
+      alert("Please enter only alphabets");
+      return false;
+   }
+}
+
+
+</script>
+
+<script type="text/javascript">
+
+        function isNumberKey(evt, obj) {
+
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            var value = obj.value;
+            var dotcontains = value.indexOf(".") != -1;
+            if (dotcontains)
+                if (charCode == 46) return false;
+            if (charCode == 46) return true;
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+            return true;
+        }
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+{% load static %}
+{% block title %}User Details{% endblock %}
+{% block background %}{% endblock %}
+{% block body %}
+<link rel="stylesheet"  href="{% static './lmsapp/addbook.css' %}">
+<center>
+    <h2>Book Details</h2>
+	<div class="container">
+    <form role="form" name="frm" action="{% url 'bookupdate' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+			<label for="book_name">Book Name</label>
+	        <input class="form-control" type="text"  id="book_name" name="book_name" value="{{ub.book_name}}" required="required">
+		</div>
+	    <div class="form-group">
+			<label for="author_name">Author Name</label>
+	        <input class="form-control" type="text"  id="author_name" name="author_name" value="{{ub.author_name}}" placeholder="Street" >
+
+		</div>
+		<div class="form-group">
+			<label for="publish_date">Published Date</label>
+	        <input type="text" class="form-control" id="publish_date" name="publish_date" max="2020-12-10" value="{{ub.publish_date}}"></td>
+		</div>
+		<div class="form-group">
+			<label for="book_copies">Book Copies</label>
+	        <input type="text" class="form-control" id="book_copies" name="book_copies" value="{{ub.book_copies}}"></td>
+		</div>
+		<button type="submit" class="btn btn-info" id="bt" name="bt">Update</button>
+        <button type="reset" class="btn btn-info" id="rt" name="rt">Reset</button>
+		<input type="hidden"name="id" value="{{ub.id}}">
+	    </table>
+    </form>
+	{{msg}}
+	</div>
+</center>
+{% endblock %}

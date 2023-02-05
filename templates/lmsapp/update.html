@@ -1,0 +1,87 @@
+{% load static %}
+{% block title %}User Details{% endblock %}
+{% block background %}{% endblock %}
+{% block body %}
+<link rel="stylesheet"  href="{% static './lmsapp/addbook.css' %}">
+<center>
+    <h1 style="color: red;">STUDENT DETAILS</h1>
+	<div class="container">
+    <form role="form" name="frm" action="{% url 'update' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+			<label for="stud_name">Name</label>
+	        <input class="form-control" type="text"  id="stud_name" name="stud_name" value="{{up.stud_name}}" onkeypress="return allowOnlyLetters(event,this);" required="required">
+		</div>
+	    <div class="form-group">
+			<label for="address">Address</label>
+	        <input class="form-control" type="text"  id="address" name="address" value="{{up.address}}" placeholder="Street" >
+
+		</div>
+	    <div class="form-group">
+			<label for="gender">Gender</label>
+	        <input type="text"  class="form-control" id="gender" name="gender" value="{{up.gender}}">
+		</div>
+		<div class="form-group">
+			<label for="email_id">Email</label>
+	        <input type="email_id" class="form-control" id="email_id" name="email_id" onblur="ValidateEmail(document.for m1.email)" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" value="{{up.email_id}}"></td>
+		</div>
+		<div class="form-group">
+			<label for="date_of_birth">Date of Birth</label>
+	        <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" max="2005-01-01" value="{{up.date_of_birth}}"></td>
+		</div>
+		<div class="form-group">
+			<label for="phn_no">Phone Number</label>
+	        <input type="text" class="form-control" id="phn_no" name="phn_no" minlength="10" maxlength="10" onkeypress="return isNumberKey(event,this)" value="{{up.phn_no}}"></td>
+		</div>
+		<button type="submit" class="btn btn-info" id="bt" name="bt">Update</button>
+        <button type="reset" class="btn btn-info" id="rt" name="rt">Reset</button>
+		<input type="hidden"name="id" value="{{up.id}}">
+	    </table>
+    </form>
+	{{msg}}
+	</div>
+</center>
+<script language="Javascript" type="text/javascript">
+
+function allowOnlyLetters(e, t)
+{
+   if (window.event)
+   {
+      var charCode = window.event.keyCode;
+   }
+   else if (e)
+   {
+      var charCode = e.which;
+   }
+   else { return true; }
+   if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123))
+       return true;
+   else
+   {
+      alert("Please enter only alphabets");
+      return false;
+   }
+}
+
+
+</script>
+
+<script type="text/javascript">
+
+        function isNumberKey(evt, obj) {
+
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            var value = obj.value;
+            var dotcontains = value.indexOf(".") != -1;
+            if (dotcontains)
+                if (charCode == 46) return false;
+            if (charCode == 46) return true;
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+            return true;
+        }
+
+
+
+    </script>
+{% endblock %}

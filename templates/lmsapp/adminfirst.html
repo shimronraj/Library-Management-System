@@ -1,0 +1,49 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Front Screen</title>
+    <link rel="stylesheet"  href="{% static './lmsapp/admfirst.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?
+     family=Alfa+Slab+One+Sans">
+</head>
+
+  <header>
+      <h1 style="color:lightblue" > Welcome {{ uname }} </h1>
+
+      <nav>
+          <ul>
+            <li><a href="adminfirst">Home</a></li>
+            <li><a href="about">About</a></li>
+            <li><a href="logout">LOGOUT</a></li>
+
+          </ul>
+      </nav>
+  </header>
+
+
+
+
+
+<body>
+    <div class="container">
+         <a href="register" target="blank">
+             <button class="btn btn1">Add Student</button>
+         </a>
+         <a href="addbook" target="blank">
+              <button class="btn btn2">Add Book</button>
+         </a>
+        <a href="studentretrive" target="blank">
+              <button class="btn btn3">View Student</button>
+        </a>
+        <a href="adminviewbook" target="blank">
+              <button class="btn btn4">View Books</button>
+        </a>
+              <button class="btn btn5">View Dues</button>
+              <button class="btn btn6">View Reviews</button>
+    </div>
+</body>
+
+</html>
